@@ -1,13 +1,14 @@
 // jest.config.ts
-import { type JestConfigWithTsJest, createDefaultPreset } from 'ts-jest'
+import { createDefaultEsmPreset, type JestConfigWithTsJest } from 'ts-jest'
 
-const defaultPreset = createDefaultPreset()
+const defaultEsmPreset = createDefaultEsmPreset()
 
 const jestConfig: JestConfigWithTsJest = {
   // [...]
-  // Replace `ts-jest` with the preset you want to use
-  // from the above list
-  ...defaultPreset,
+  ...defaultEsmPreset,
+  moduleNameMapper: {
+    '^(\\.{1,2}/.*)\\.js$': '$1',
+  },
 }
 
 export default jestConfig
